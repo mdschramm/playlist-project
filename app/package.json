@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^4.3.5"
+    "@types/react-router-dom": "^4.3.5",
+    "eslint-utils": "1.4.1"
   }
 }
