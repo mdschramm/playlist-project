@@ -8,23 +8,29 @@ const config = {
         Authorization: ''
     }
 }
-const ButtonView: React.FC = () => {
+const DataView: React.FC = () => {
     const {access_token} = parse(window.location.hash);
+    console.log(access_token);
 
     config.headers.Authorization = `Bearer ${access_token}`;
+    console.log(config.headers.Authorization);
 
     const [artists, setArtists] = useState([]);
     useEffect(() => {
-        const load = async () => {
-            // todo next, spotify response typings
-            const {data: { items }}: any = await axios.get('https://api.spotify.com/v1/me/top/artists', config);
-            setArtists(items);
+        try {
+            const load = async () => {
+                // todo next, spotify response typings
+                const {data: { items }}: any = await axios.get('https://api.spotify.com/v1/me/top/artists', config);
+                setArtists(items);
+            }
+            load();
+        } catch (e) {
+            console.error(e);
         }
-        load();
     }, [access_token]);
     return (
        <div>{artists && artists.map((a, i) => <Artist key={i} artist={a}/>)}</div>
     );
 };
 
-export default ButtonView;
+export default DataView;
