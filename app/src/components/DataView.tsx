@@ -10,10 +10,8 @@ const config = {
 }
 const DataView: React.FC = () => {
     const {access_token} = parse(window.location.hash);
-    console.log(access_token);
 
     config.headers.Authorization = `Bearer ${access_token}`;
-    console.log(config.headers.Authorization);
 
     const [artists, setArtists] = useState([]);
     useEffect(() => {
