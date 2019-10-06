@@ -11,8 +11,8 @@ const ButtonView: React.FC = () => {
 
     const query = {
         scope: scopes.join(' '),
-        redirect_uri: query_constants['redirect_uri'],
-        client_id: query_constants['client_id'],
+        redirect_uri: query_constants.redirect_uri,
+        client_id: query_constants.client_id,
         response_type: 'token',
     }
 
